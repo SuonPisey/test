@@ -1,0 +1,16 @@
+
+ import "./postData.zmodel"  
+ import "./category.zmodel"  
+
+model PostCategory {
+
+    postId        String?          
+    post            PostData?    @relation(fields: [postId], references: [id], name:"post")  
+    categoryId  String?          
+    category    Category?    @relation(fields: [categoryId], references: [id], name:"category")  
+    id                String        @id @default(uuid())  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

@@ -1,0 +1,16 @@
+
+ import "./user.zmodel"  
+ import "./skill.zmodel"  
+
+model UserSkill {
+
+    userId        String?          
+    user            User?            @relation(fields: [userId], references: [id], name:"user")  
+    skillId      String?          
+    skill          Skill?          @relation(fields: [skillId], references: [id], name:"skill")  
+    id                String        @id @default(uuid())  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

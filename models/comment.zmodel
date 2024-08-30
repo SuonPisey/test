@@ -1,0 +1,18 @@
+
+ import "./postData.zmodel"  
+ import "./user.zmodel"  
+
+model Comment {
+
+    id                String        @id @default(uuid())  
+    content      String?          
+ 
+    postId        String?          
+    post            PostData?    @relation(fields: [postId], references: [id], name:"post")  
+    userId        String?          
+    user            User?            @relation(fields: [userId], references: [id], name:"user")  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

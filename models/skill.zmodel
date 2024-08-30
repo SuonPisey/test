@@ -1,0 +1,13 @@
+
+ import "./userSkill.zmodel"  
+
+model Skill {
+
+    id                String        @id @default(uuid())  
+    name            String?          
+
+userSkills  UserSkill[]  @relation("skill")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
